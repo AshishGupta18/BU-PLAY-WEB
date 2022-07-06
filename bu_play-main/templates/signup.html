@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/signup.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="box-content">
+         <div class="text">
+            <p class="login-text">Create Your Account</p>
+            <p class="login-text-info">Use your College Email id</p>
+         </div>
+         <form id="sign-up-form">
+            <div class="input-box">
+                <img style="align-self:center;margin-left: 16px;" src="{{ url_for('static',filename='images/user.png') }}" width="21px" height="21px"/>
+                <input placeholder="Full Name" name="full_name" class="input-field" type="text">
+            </div>
+            <div class="input-box">
+                <img style="align-self:center;margin-left: 16px;" src="{{ url_for('static',filename='images/mail.png') }}" width="21px" height="21px"/>
+                <input placeholder="Email ID" name="email" class="input-field" type="text">
+            </div>
+            <div class="input-box">
+                <img style="align-self:center ;margin-left: 16px" src="{{ url_for('static',filename='images/lock.svg') }}" width="21px" height="21px"/>
+                <input  placeholder="Password" name="password" class="input-field" type="password">
+            </div>
+            <button onclick="makeOtp(event) " id="submit" class="submit">Create Account</button>
+         </form>
+        </div>
+        <div class="box-content" id="otp" style="display: none;">
+            <div class="text">
+               <p class="login-text">Create Your Account</p>
+               <p class="login-text-info">Otp has been sent to your mail. Please enter the OTP to confirm your details</p>
+            </div>
+            <form id="otp-form">
+               <div class="input-box">
+                   <img style="align-self:center;margin-left: 16px;" src="{{ url_for('static',filename='images/lock.svg') }}" width="21px" height="21px"/>
+                   <input name="otp" type="password" placeholder="Enter Your OTP" class="input-field" type="text">
+               </div>
+            
+               <button onclick="onSubmitClick(event)"  class="submit">Create Account</button>
+            </form> 
+           </div>
+    </div>
+  
+</body>
+<script>
+    let proper_otp=0;
+    function onSubmitClick(event){
+        data={}
+        $.each($('#otp-form').serializeArray(), function(i, field) {
+                data[field.name] = field.value;
+        });
+        console.log({data})
+        if(parseInt(data['otp'])===proper_otp){
+           makeUser(event)
+        }
+        else{
+            alert("wrong otp")
+        }
+        
+        event.preventDefault()
+    }
+    function makeUser(event){
+        event.preventDefault()
+        let data={}
+        $.each($('#sign-up-form').serializeArray(), function(i, field) {
+                data[field.name] = field.value;
+        });
+        $.each($('#otp-form').serializeArray(), function(i, field) {
+                data[field.name] = field.value;
+        });
+        console.log({data})
+        $.ajax(
+            {
+                url:"/user/signup",
+                type:"POST",
+                data:data,
+                dataType:"json",
+                success:function(res){
+                    window.location.href = '/login'
+                },
+                error:function(res){
+                    console.log()
+                }
+            }
+        )
+        event.preventDefault()
+    }
+    function makeOtp(event){
+        event.preventDefault()
+        console.log("dkflsjd")
+        let data={};
+        $.each($('#sign-up-form').serializeArray(), function(i, field) {
+                data[field.name] = field.value;
+        });
+        data={email:data['email']}
+        $.ajax(
+            {
+                url:"/user/sendotp",
+                type:"POST",
+                data:data,
+                dataType:"json",
+                success:function(res){
+                    console.log(res)
+                    console.log(res)
+                    proper_otp=parseInt(res['respond'])
+                },
+                error:function(res){
+                    console.log("errrr",res)
+                },
+                
+                
+            }
+        )
+        $('.box-content').fadeOut().hide()
+                    $('#otp').addClass('make-visible').fadeIn()
+    }   
+    
+       
+   
+</script>
+</html>

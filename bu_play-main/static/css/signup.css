@@ -1,0 +1,79 @@
+@import url(//db.onlinewebfonts.com/c/2c7fd0564537c52b87f86f126307038a?family=SpeedBeast+FREE);
+@import url("http://fonts.cdnfonts.com/css/aileron");
+body {
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+}
+.box {
+  position: absolute;
+  width: 50%;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+      112.07deg,
+      rgba(0, 5, 23, 0.3) 2.43%,
+      rgba(5, 112, 136, 0.15) 100.09%
+    ),
+    rgba(14, 14, 14, 0.05);
+  border: 3px solid #7859d1;
+  box-shadow: 13px 16px 87px 4px rgba(0, 198, 254, 0.8);
+  backdrop-filter: blur(120px);
+  border-radius: 50px;
+}
+.login-text {
+  font-family: SpeedBeast Free;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2em;
+  line-height: 1.2em;
+  color: #00c6fe;
+}
+.login-text-info {
+  font-family: Aileron;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #7859d1;
+  padding-left: 5px
+}
+form {
+  margin-top: 44px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #00c6fe;
+  background-color: transparent;
+  font-style: italic;
+}
+.input-field::placeholder {
+  color: #7859d1;
+}
+.input-box {
+  display: flex;
+  border: 2px solid #c0aaff;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.submit {
+  width: 205px;
+  height: 47px;
+  background: #7859d1;
+  border-radius: 10px;
+  color: white;
+}
+.box-content {
+  padding-left: 104px;
+  padding-right: 272px;
+  padding-top: 45px;
+}
+.make-visible{
+    display: block !important;
+}

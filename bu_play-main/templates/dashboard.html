@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="{ {url_for('static',filename='css/dashboard.css')}}" />
+  </head>
+
+  <body>
+    <div class="box-1">
+      <div class="profile">
+        <div class="box-2"></div>
+        <div>
+          <div class="box-3 progress">
+            <div></div>
+          </div>
+          <div>
+            <div class="xp-score">444/5000 XP</div>
+          </div>
+          <div class="user-info">
+            <p class="name"></p>
+            <p class="roll">E21CSEU0227</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="{{ url_for('static',filename='images/cult-coin.png') }}" class="sigma-coin" />
+        <p class="sigma">Sigma Coin</p>
+        <p class="sigma-score">60</p>
+      </div>
+      <div>
+        <img src="{{ url_for('static',filename='images/acad-coin.png') }}" class="alpha-coin" />
+        <p class="alpha">Alpha Coin</p>
+        <p class="alpha-score">600</p>
+      </div>
+
+      <span class="efficiency-score">
+        <div>Efficiency score</div>
+        <p class="number">144</p>
+        <br />
+      </span>
+      <div class="attributes">
+        <div class="attribute">
+          <p class="attribute-text">Time Mangement</p>
+          <div class="attribute-progress">
+            <div></div>
+          </div>
+        </div>
+        <div class="attribute">
+          <p class="attribute-text">Surveys Filled</p>
+          <div class="attribute-progress">
+            <div></div>
+          </div>
+        </div>
+        <div class="attribute">
+          <p class="attribute-text">Social Score</p>
+          <div class="attribute-progress">
+            <div></div>
+          </div>
+        </div>
+        <div class="attribute">
+          <p class="attribute-text">Time Mangement</p>
+          <div class="attribute-progress">
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <span class="participation-score">
+        <span>
+          Participation Score
+          <span class="score"> 73</span>
+        </span>
+        <p></p>
+        <div style="margin-left: 47px">
+          You have participated in 8 events out of 13
+        </div>
+      </span>
+      <div class="event-progress">
+        <div></div>
+      </div>
+    </div>
+    <div style="margin-left: 10%">
+      <div class="events">
+        <p class="event-list">Event List</p>
+        <!-- <p class="events-3">(3 Events)</p> -->
+        <section class="card-list">
+          <article class="card">
+            <header class="card-header">
+              <img src="{{ url_for('static',filename='images/card.png') }}" width="285px" height="285px" />
+              <div class="card-name"><a href="">Register</a></div>
+            </header>
+          </article>
+          <article class="card">
+            <header class="card-header">
+              <img src="{{ url_for('static',filename='images/hackathon.jpg') }}" width="275px" height="285px" />
+              <div class="card-name">
+                <a
+                  href="https://unstop.com/hackathon/data-challenge-ii-henry-harvin-education-328792"
+                  target="-blank"
+                  >Register</a
+                >
+              </div>
+            </header>
+          </article>
+          <article class="card">
+            <header class="card-header">
+              <img src="{{ url_for('static',filename='images/sunset.jpeg') }}" width="265px" height="285px" />
+              <div class="card-name"><a href="">Register</a></div>
+            </header>
+          </article>
+        </section>
+      </div>
+      <p class="achievements">Pending Rewards</p>
+    
+        <div class="coin-redeem">
+          <p class="box-text">
+            You have earned 50 coins from the math quiz you have given today
+          </p>
+          
+        </div>
+      </div>
+      <button class="redeem">REDEEM</button>
+      
+    
+    <script src="{{ url_for('static',filename='js/dashboard.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body background="{{ url_for('static', filename='images/bg.jpg') }}">
+
+  <div>
+    <div class="box">
+      <div class="box-content">
+        <div class="text">
+          <p class="log-in">Log In</p>
+          <p class="log-in-to-manage">Login To Manage Your Account</p>
+        </div>
+        <form id="login-in-form">
+          <div class="input-box">
+            <img style="align-self: center; margin-left: 16px" src="{{ url_for('static',filename='images/user.png') }}"
+              width="21px" height="21px" />
+            <input placeholder="Email ID" name="email" class="input-field" type="text" />
+          </div>
+          <div class="input-box">
+            <img style="align-self: center; margin-left: 16px" src="{{ url_for('static',filename='images/lock.svg') }}"
+              width="21px" height="21px" />
+            <input type="password" name="password" placeholder="Password" class="input-field" type="text" />
+          </div>
+          <button class="button" onclick="onSubmitClick(event)">Log In</button>
+        </form>
+        <p class="link-text">
+          <i>Do not have an account?</i>
+          <a href="./signup" class="link">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function onSubmitClick(event) {
+    event.preventDefault()
+    console.log("jdsklfjlskdfjldsjfldfjldsjflsdjfdsl;j")
+    const data = {};
+    $.each($('#login-in-form').serializeArray(), function (i, field) {
+      data[field.name] = field.value;
+    });
+    console.log(data)
+    $.ajax(
+      {
+        url: "/user/login",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+          console.log(res)
+          window.location.href = '/dashboard'
+        },
+        error: function (res) {
+          console.log(res)
+          window.location.href = '/login'
+        }
+      }
+    )
+    event.preventDefault()
+
+  }   
+</script>
+
+</html>
